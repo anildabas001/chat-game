@@ -1,47 +1,16 @@
-# <a href="https://github.com/rhildred/nodeAsyncGameBot" target="_blank">nodeAsyncGameBot</a>
+### Hangman Chat Game
 
-I got the user interface for the web from a student of mine, Pat Wilken.
+This Hangman Chat game has been designed by Anil Dabas.
 
-A chatbot written in es6 and vs6 for twilio and testing on the web. The important files are index.js and OverAndUnder.js.
+# App Description?
+This a Hangman chat game where the user playing the game would be given maximum 14 turns to guess the word.
+Initially user will be asked to choose the difficulty level from beginner, easy, medium and difficult, based on the difficulty level, blanks will be shown where the user has to guess the word. User will be having maximum of 14 turns and in each turn he has to guess one character, if the character is right then it will fill the blank otherwise it will show that user chosen the wrong word.  Once user has exhausted all his turns and he fails to guess the word then he will loose if he guesses the correct word without exhausting all his turns he wins.
 
-This is a simple number guessing game. The difference between this and the other games is that it is asynchronous so that you can wait before sending a response. In the index we do the response in a callback:
+Enjoy Playing!
 
-```
-    oGames[sFrom].makeAMove(sMessage, (aReply) =>{
-        res.setHeader('content-type', 'text/xml');
-        let sResponse = "<Response>";
-        for(let n = 0; n < aReply.length; n++){
-            sResponse += "<Message>";
-            sResponse += aReply[n];
-            sResponse += "</Message>";
-        }
-        res.end(sResponse + "</Response>");
-    
-    });
-
-
-```
-
-Then in our game we can send the response immediately:
-
-```
-    makeAMove(sInput, fCallback){
-        if(!this.nComputer){
-            this.makeANumber();
-            fCallback(["Welcome to Over and Unders", "Please guess a number between 1 and 100"]);
-            return;
-        }
-
-
-```
-or wait and send the response later:
-
-```
-        setTimeout(() => { 
-            fCallback([sReturn]); 
-        }, 3000);
-
-
-```
-Be careful with how long you wait. There is no load on your server while waiting but messaging apps like Kik require you to answer in 5 seconds.
-
+# Building the app:
+1. git clone (download the repository)
+2. download the dependency: npm install
+3. open the terminal and execute npm start
+4. open browser in localhost:3000
+5. Hangman chat game will be up and running.
